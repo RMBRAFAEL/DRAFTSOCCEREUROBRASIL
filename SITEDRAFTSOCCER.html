@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Draft Soccer Euro Brasil 2026</title>
+<style>
+:root{
+  --bg:#0b0b0b;--bg2:#151515;--yellow:#f5c400;--gold:#b89a4a;--white:#fff;--light:#f4f4f2;--muted:#a8a8a8;--line:#2a2a2a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--white);line-height:1.5}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.container{width:min(1180px,calc(100% - 32px));margin:auto}
+.section{padding:82px 0}
+h1,h2,h3{margin:0;text-transform:uppercase;line-height:.96}
+h1{font-size:clamp(3.2rem,9vw,7rem)}
+h2{font-size:clamp(2.3rem,6vw,4.7rem)}
+p{color:#d0d0d0}
+.eyebrow{color:var(--yellow);font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
+.btn{border:0;border-radius:999px;padding:14px 22px;font-weight:800;cursor:pointer;display:inline-flex;justify-content:center;align-items:center}
+.btn-primary{background:var(--yellow);color:#111}
+.btn-secondary{background:transparent;border:1px solid #666;color:#fff}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,11,11,.9);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800}
+.shield{width:42px;height:48px;display:grid;place-items:center;border:1px solid var(--gold);clip-path:polygon(50% 0,100% 14%,92% 72%,50% 100%,8% 72%,0 14%);background:#111;color:var(--yellow);font-size:.85rem}
+.navlinks{display:flex;gap:22px;align-items:center}
+.navlinks a{font-size:.92rem;color:#ddd}
+.hero{min-height:100vh;display:flex;align-items:flex-end;padding:130px 0 72px;background:
+linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.58) 48%,rgba(0,0,0,.6)),
+radial-gradient(circle at 75% 35%,rgba(245,196,0,.2),transparent 22%),
+linear-gradient(135deg,#111,#222);}
+.hero p{max-width:620px;font-size:1.12rem;margin:18px 0 28px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.quickbar{background:#fff;color:#111}
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.quick-item{padding:24px;border-right:1px solid #e5e5e5}
+.quick-item strong{display:block;font-size:1.7rem;text-transform:uppercase}
+.quick-item span{color:#666;font-size:.9rem}
+.light{background:var(--light);color:#111}
+.light p{color:#5d5d5d}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:32px}
+.section-head p{max-width:520px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filter{border:1px solid #d4d4d4;background:#fff;color:#222;padding:10px 16px;border-radius:999px;cursor:pointer;font-weight:700}
+.filter.active{background:#111;color:#fff;border-color:#111}
+.stages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.stage-card{background:#fff;border:1px solid #e2e2e2;border-radius:18px;padding:22px}
+.tag{display:inline-block;padding:7px 10px;border-radius:999px;background:#efefef;color:#666;font-size:.72rem;font-weight:800;text-transform:uppercase;margin-bottom:14px}
+.stage-card h3{font-size:1.9rem}
+.stage-card p{margin:8px 0;color:#666}
+.stage-link{display:inline-block;margin-top:12px;font-weight:800}
+.position-wrap{display:grid;grid-template-columns:330px 1fr;gap:30px}
+.city-select{width:100%;padding:14px;border-radius:12px;background:#161616;border:1px solid #333;color:#fff;margin-top:14px}
+.position-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.position-card{background:#151515;border:1px solid #2b2b2b;border-radius:16px;padding:18px;cursor:pointer}
+.position-top{display:flex;justify-content:space-between;gap:15px}
+.position-name{font-weight:800}
+.availability{color:#bbb;font-size:.85rem}
+.bar{height:7px;background:#2c2c2c;border-radius:999px;overflow:hidden;margin-top:14px}
+.bar span{display:block;height:100%;background:var(--yellow)}
+.concept-grid,.kit,.parents,.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.placeholder{min-height:430px;border-radius:20px;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);display:grid;place-items:center;color:#777;font-weight:700}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+.flow div{border-top:1px solid #444;padding-top:14px}
+.flow b{color:var(--yellow);display:block;margin-bottom:6px}
+.timeline{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:30px}
+.step{background:#fff;border:1px solid #ddd;border-radius:14px;padding:16px;min-height:115px}
+.step .num{font-size:1.8rem;color:var(--gold);font-weight:800}
+.criteria{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.criterion{border:1px solid #2f2f2f;background:#141414;border-radius:14px;padding:20px}
+.price{font-size:4rem;font-weight:900}
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.trust{background:#fff;border:1px solid #ddd;border-radius:14px;padding:18px}
+.trust p{color:#666}
+.faq{max-width:900px;margin:auto}
+.faq-item{border-bottom:1px solid #d8d8d8}
+.faq-q{width:100%;display:flex;justify-content:space-between;background:none;border:0;padding:20px 0;font-weight:800;text-align:left;cursor:pointer;color:#111}
+.faq-a{display:none;color:#666;padding-bottom:18px}
+.faq-item.open .faq-a{display:block}
+.cta{min-height:520px;display:flex;align-items:center;background:linear-gradient(135deg,#111,#1c1c1c)}
+footer{padding:42px 0;border-top:1px solid #252525}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:26px}
+.footer-links{display:grid;gap:8px;color:#c8c8c8}
+.small{font-size:.82rem;color:#777}
+.floating{position:fixed;right:18px;bottom:18px;z-index:45}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:100;padding:18px}
+.modal.open{display:flex}
+.modal-card{width:min(760px,100%);max-height:92vh;overflow:auto;background:#fff;color:#111;border-radius:20px;padding:24px}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.close{border:0;background:#eee;width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer}
+.progress{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:18px 0 24px}
+.progress span{height:5px;background:#e5e5e5;border-radius:999px}
+.progress span.active{background:#111}
+.form-step{display:none}
+.form-step.active{display:block}
+.choice-grid,.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.choice{border:1px solid #d7d7d7;border-radius:12px;padding:15px;background:#fff;text-align:left;cursor:pointer}
+.choice.selected{box-shadow:0 0 0 2px #111 inset;border-color:#111}
+.field{display:grid;gap:6px}
+.field label{font-size:.82rem;font-weight:700}
+.field input,.field select{padding:12px 13px;border:1px solid #d7d7d7;border-radius:10px}
+.modal-actions{display:flex;justify-content:space-between;gap:12px;margin-top:22px}
+.summary-box{background:#f5f5f5;border-radius:14px;padding:18px}
+.confirm{text-align:center;padding:24px}
+.confirm-icon{width:68px;height:68px;border-radius:50%;background:#e7f8ef;color:#087342;display:grid;place-items:center;margin:0 auto 14px;font-size:2rem;font-weight:900}
+
+@media(max-width:900px){
+  .navlinks{display:none}
+  .quick-grid{grid-template-columns:repeat(2,1fr)}
+  .stages-grid{grid-template-columns:repeat(2,1fr)}
+  .position-wrap,.concept-grid,.kit,.parents,.about-grid{grid-template-columns:1fr}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  .criteria{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  .container{width:min(100% - 22px,1180px)}
+  .section{padding:64px 0}
+  .hero{min-height:92vh;padding-top:115px}
+  .hero-actions .btn{width:100%}
+  .stages-grid,.position-grid,.criteria,.trust-grid,.choice-grid,.form-grid{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .floating{left:12px;right:12px}
+  .floating .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="brand"><div class="shield">DS<br>26</div><span>DRAFT SOCCER EURO BRASIL</span></a>
+    <nav class="navlinks">
+      <a href="#o-draft">O Draft</a>
+      <a href="#etapas">Etapas</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#avaliacao">Avaliação</a>
+      <a href="#faq">FAQ</a>
+      <button class="btn btn-primary open-register">Inscreva-se</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="eyebrow">Draft Soccer Euro Brasil 2026</div>
+    <h1>Seu futebol precisa ser visto.</h1>
+    <p>Avaliação profissional para atletas de 16 a 18 anos, com etapas em diferentes cidades e vagas limitadas por posição.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#etapas">Encontre sua etapa</a>
+      <a class="btn btn-secondary" href="#como-funciona">Como funciona</a>
+    </div>
+    <p class="small" style="margin-top:46px">Uma iniciativa RMB SPORTS</p>
+  </div>
+</section>
+
+<section class="quickbar">
+  <div class="container quick-grid">
+    <div class="quick-item"><strong>16–18 anos</strong><span>Faixa etária</span></div>
+    <div class="quick-item"><strong>R$ 100</strong><span>Inscrição / kit*</span></div>
+    <div class="quick-item"><strong>Limitadas</strong><span>Vagas por posição</span></div>
+    <div class="quick-item"><strong>Nacional</strong><span>Circuito em etapas</span></div>
+  </div>
+</section>
+
+<section class="section light" id="etapas">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">Draft 2026 / Etapas</div><h2>Onde você quer jogar?</h2></div>
+      <p>Escolha uma etapa, consulte a situação da sede e veja as vagas disponíveis para sua posição.</p>
+    </div>
+    <div class="filters">
+      <button class="filter active" data-region="todos">Todos</button>
+      <button class="filter" data-region="nordeste">Nordeste</button>
+      <button class="filter" data-region="sudeste">Sudeste</button>
+      <button class="filter" data-region="sul">Sul</button>
+      <button class="filter" data-region="centro-oeste">Centro-Oeste</button>
+    </div>
+    <div class="stages-grid" id="stagesGrid"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container position-wrap">
+    <div>
+      <div class="eyebrow">Sua posição / Sua vaga</div>
+      <h2>As vagas não são ilimitadas.</h2>
+      <p>O limite é controlado por posição em cada etapa.</p>
+      <select class="city-select" id="citySelect"></select>
+    </div>
+    <div class="position-grid" id="positionGrid"></div>
+  </div>
+</section>
+
+<section class="section" id="o-draft">
+  <div class="container concept-grid">
+    <div class="placeholder">ÁREA PARA FOTO REAL DO PROJETO</div>
+    <div>
+      <div class="eyebrow">O projeto</div>
+      <h2>Não é apenas uma peneira.</h2>
+      <p>O Draft Soccer Euro Brasil nasce como uma plataforma nacional de identificação e avaliação de jovens talentos, conectando atletas a processos profissionais de observação e possíveis oportunidades no futebol.</p>
+      <div class="flow">
+        <div><b>01</b>Identificar</div><div><b>02</b>Avaliar</div><div><b>03</b>Desenvolver</div><div><b>04</b>Conectar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section light" id="como-funciona">
+  <div class="container">
+    <div class="eyebrow">Como funciona</div>
+    <h2>Do primeiro clique ao campo.</h2>
+    <div class="timeline">
+      <div class="step"><div class="num">01</div><strong>Escolha sua etapa</strong></div>
+      <div class="step"><div class="num">02</div><strong>Escolha sua posição</strong></div>
+      <div class="step"><div class="num">03</div><strong>Faça sua inscrição</strong></div>
+      <div class="step"><div class="num">04</div><strong>Receba seu kit</strong></div>
+      <div class="step"><div class="num">05</div><strong>Entre em campo</strong></div>
+      <div class="step"><div class="num">06</div><strong>Seja avaliado</strong></div>
+      <div class="step"><div class="num">07</div><strong>Acompanhe o resultado</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="avaliacao">
+  <div class="container">
+    <div class="eyebrow">Avaliação</div>
+    <h2>O que vamos observar em você?</h2>
+    <div class="criteria">
+      <div class="criterion"><h3>Técnica</h3><p>Fundamentos e qualidade de execução.</p></div>
+      <div class="criterion"><h3>Tática</h3><p>Leitura e entendimento do jogo.</p></div>
+      <div class="criterion"><h3>Decisão</h3><p>Escolhas em diferentes contextos.</p></div>
+      <div class="criterion"><h3>Físico</h3><p>Capacidade aplicada à partida.</p></div>
+      <div class="criterion"><h3>Competitividade</h3><p>Intensidade e atitude.</p></div>
+      <div class="criterion"><h3>Potencial</h3><p>Possibilidade de evolução esportiva.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section light">
+  <div class="container kit">
+    <div>
+      <div class="eyebrow">Kit oficial 2026</div>
+      <h2>Vista o Draft.</h2>
+      <p>Camisa + calção + bolsa/sacochila. Itens finais conforme regulamento oficial.</p>
+      <div class="price">R$ 100</div>
+      <br><button class="btn btn-primary open-register">Quero participar</button>
+    </div>
+    <div class="placeholder">ÁREA PARA MOCKUP DO KIT</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container parents">
+    <div>
+      <div class="eyebrow">Pais e responsáveis</div>
+      <h2>Para quem sonha e para quem cuida desse sonho.</h2>
+      <p>Informações claras sobre organização, segurança, regulamento, avaliação e participação de menores.</p>
+    </div>
+    <div class="trust-grid">
+      <div class="trust"><h3>Organização</h3><p>Quem realiza e como funciona.</p></div>
+      <div class="trust"><h3>Segurança</h3><p>Estrutura operacional e orientações.</p></div>
+      <div class="trust"><h3>Autorização</h3><p>Consentimento de menores.</p></div>
+      <div class="trust"><h3>Resultados</h3><p>Como serão comunicados.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section light" id="faq">
+  <div class="container faq">
+    <div class="eyebrow">FAQ</div>
+    <h2>Antes de entrar em campo.</h2>
+    <div id="faqList"></div>
+  </div>
+</section>
+
+<section class="section cta">
+  <div class="container">
+    <div class="eyebrow">Draft Soccer Euro Brasil 2026</div>
+    <h2>Talento você já tem.<br>Agora precisa mostrar.</h2>
+    <br><button class="btn btn-primary open-register">Encontre sua etapa</button>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div><div class="brand"><div class="shield">DS<br>26</div><span>DRAFT SOCCER EURO BRASIL</span></div><p>Uma iniciativa RMB SPORTS.</p><div class="small">© 2026 RMB SPORTS LTDA.</div></div>
+    <div class="footer-links"><strong>Projeto</strong><a href="#o-draft">O Draft</a><a href="#etapas">Etapas</a><a href="#avaliacao">Avaliação</a></div>
+    <div class="footer-links"><strong>Legal</strong><a href="#">Regulamento</a><a href="#">Privacidade</a><a href="#">Contato</a></div>
+  </div>
+</footer>
+
+<div class="floating"><button class="btn btn-primary open-register">Consultar vagas</button></div>
+
+<div class="modal" id="registerModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div><div class="eyebrow">Inscrição</div><h3 style="font-size:2.1rem">Draft Soccer Euro Brasil 2026</h3></div>
+      <button class="close" id="closeModal">×</button>
+    </div>
+    <div class="progress"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+
+    <div class="form-step active" data-step="1">
+      <h3 style="font-size:1.9rem">1. Escolha sua etapa</h3>
+      <div class="choice-grid" id="stageChoices"></div>
+    </div>
+    <div class="form-step" data-step="2">
+      <h3 style="font-size:1.9rem">2. Escolha sua posição</h3>
+      <div class="choice-grid" id="positionChoices"></div>
+    </div>
+    <div class="form-step" data-step="3">
+      <h3 style="font-size:1.9rem">3. Dados do atleta</h3>
+      <div class="form-grid">
+        <div class="field"><label>Nome completo</label><input id="athleteName"></div>
+        <div class="field"><label>Data de nascimento</label><input type="date"></div>
+        <div class="field"><label>CPF</label><input></div>
+        <div class="field"><label>WhatsApp</label><input></div>
+        <div class="field"><label>Altura</label><input placeholder="Ex.: 1,78 m"></div>
+        <div class="field"><label>Peso</label><input placeholder="Ex.: 72 kg"></div>
+        <div class="field"><label>Pé dominante</label><select><option>Direito</option><option>Esquerdo</option><option>Ambidestro</option></select></div>
+        <div class="field"><label>Posição secundária</label><select id="secondaryPosition"></select></div>
+      </div>
+    </div>
+    <div class="form-step" data-step="4">
+      <h3 style="font-size:1.9rem">4. Responsável legal</h3>
+      <div class="form-grid">
+        <div class="field"><label>Nome do responsável</label><input></div>
+        <div class="field"><label>CPF do responsável</label><input></div>
+        <div class="field"><label>WhatsApp</label><input></div>
+        <div class="field"><label>E-mail</label><input type="email"></div>
+      </div>
+      <div style="display:grid;gap:12px;margin-top:18px">
+        <label style="display:flex;gap:9px;align-items:flex-start">
+          <input type="checkbox" id="noClub">
+          <span>Declaro que o atleta não possui vínculo com clube de futebol profissional.</span>
+        </label>
+        <label style="display:flex;gap:9px;align-items:flex-start">
+          <input type="checkbox" id="noAgent">
+          <span>Declaro que o atleta não possui vínculo com empresário, agente ou empresa de representação esportiva.</span>
+        </label>
+        <label style="display:flex;gap:9px;align-items:flex-start">
+          <input type="checkbox" id="cardio">
+          <span>Estou ciente de que será obrigatória a apresentação de parecer/atestado cardiológico que declare a aptidão do atleta para a prática esportiva antes da participação nas atividades em campo.</span>
+        </label>
+        <label style="display:flex;gap:9px;align-items:flex-start">
+          <input type="checkbox" id="terms">
+          <span>Li e concordo com o Regulamento Oficial e com o Termo de Responsabilidade do Draft Soccer Euro Brasil.</span>
+        </label>
+      </div>
+    </div>
+    <div class="form-step" data-step="5">
+      <div class="summary-box">
+        <h3 style="font-size:1.9rem">Resumo</h3>
+        <p id="summaryText" style="color:#555"></p>
+        <div class="price" style="font-size:3rem">R$ 100</div>
+        <p style="color:#777">Pagamento apenas simulado nesta versão.</p>
+        <button class="btn btn-primary" id="simulatePayment">Simular pagamento e confirmar</button>
+      </div>
+    </div>
+    <div class="form-step" data-step="6">
+      <div class="confirm">
+        <div class="confirm-icon">✓</div>
+        <h3 style="font-size:2.5rem">Inscrição confirmada</h3>
+        <p id="confirmationText" style="color:#666"></p>
+        <button class="btn btn-primary" id="finish">Fechar</button>
+      </div>
+    </div>
+
+    <div class="modal-actions" id="modalActions">
+      <button class="btn btn-secondary" style="color:#111;border-color:#aaa" id="prevStep">Voltar</button>
+      <button class="btn btn-primary" id="nextStep">Continuar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const stages=[
+{id:'pe',state:'Pernambuco',city:'Cidade em definição',region:'nordeste',status:'Em breve'},
+{id:'pb',state:'Paraíba',city:'Sapé',region:'nordeste',status:'Sede em confirmação'},
+{id:'al',state:'Alagoas',city:'Maceió',region:'nordeste',status:'Sede em definição'},
+{id:'rn',state:'Rio Grande do Norte',city:'Cidade em definição',region:'nordeste',status:'Em breve'},
+{id:'ba',state:'Bahia',city:'Salvador',region:'nordeste',status:'Sede em definição'},
+{id:'rj',state:'Rio de Janeiro',city:'Cidade em definição',region:'sudeste',status:'Em breve'},
+{id:'sp',state:'São Paulo',city:'Cidade em definição',region:'sudeste',status:'Em breve'},
+{id:'sc',state:'Santa Catarina',city:'Cidade em definição',region:'sul',status:'Em breve'},
+{id:'go',state:'Goiás',city:'Cidade em definição',region:'centro-oeste',status:'Em breve'}
+];
+
+const basePositions=[
+{name:'Goleiro',cap:12,sold:8},{name:'Lateral Direito',cap:20,sold:11},{name:'Lateral Esquerdo',cap:20,sold:13},
+{name:'Zagueiro',cap:30,sold:22},{name:'Volante',cap:30,sold:18},{name:'Meia',cap:30,sold:25},
+{name:'Ponta Direita',cap:24,sold:16},{name:'Ponta Esquerda',cap:24,sold:17},{name:'Centroavante',cap:18,sold:16}
+];
+const inventories=Object.fromEntries(stages.map((s,idx)=>[s.id,basePositions.map((p,i)=>({...p,sold:Math.min(p.cap,Math.max(0,p.sold+((idx+i)%5)-2))}))]));
+
+function renderStages(region='todos'){
+ document.getElementById('stagesGrid').innerHTML=stages.filter(s=>region==='todos'||s.region===region).map(s=>`
+ <article class="stage-card">
+ <span class="tag">${s.status}</span>
+ <h3>${s.state}</h3>
+ <p>📍 ${s.city}</p>
+ <a class="stage-link" href="#vagas" onclick="selectStage('${s.id}')">Ver etapa →</a>
+ </article>`).join('');
+}
+
+function renderSelect(){
+ const sel=document.getElementById('citySelect');
+ sel.innerHTML=stages.map(s=>`<option value="${s.id}">${s.state} — ${s.city}</option>`).join('');
+ sel.addEventListener('change',()=>renderPositions(sel.value));
+}
+
+function renderPositions(id='pe'){
+ document.getElementById('positionGrid').innerHTML=inventories[id].map(p=>{
+   const left=p.cap-p.sold,pct=Math.round(p.sold/p.cap*100);
+   const label=left<=0?'Esgotado':left<=5?`Últimas ${left} vagas`:`${left} vagas disponíveis`;
+   return `<div class="position-card" onclick="openRegister('${id}','${p.name}')">
+     <div class="position-top"><div><div class="position-name">${p.name}</div><div class="availability">${label}</div></div><div>→</div></div>
+     <div class="bar"><span style="width:${Math.min(pct,100)}%"></span></div>
+   </div>`;
+ }).join('');
+}
+window.selectStage=function(id){document.getElementById('citySelect').value=id;renderPositions(id)}
+
+document.querySelectorAll('.filter').forEach(btn=>btn.onclick=()=>{
+ document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));
+ btn.classList.add('active');renderStages(btn.dataset.region);
+});
+
+const faqData=[
+['Quem pode participar?','Podem participar atletas que atendam à faixa etária estabelecida no Regulamento Oficial do Draft Soccer Euro Brasil e que estejam livres de vínculo com clubes de futebol profissional, empresários, agentes ou empresas de representação esportiva, mediante assinatura do respectivo Termo de Responsabilidade. Para participar das atividades em campo, será obrigatória a apresentação de parecer/atestado cardiológico que declare a aptidão do atleta para a prática esportiva, conforme as exigências definidas no regulamento do evento. A inscrição estará sujeita à conferência da documentação exigida pela organização.'],
+['Quanto custa?','Neste protótipo, o valor exibido é R$ 100.'],
+['Como funcionam as vagas por posição?','Cada etapa possui limite próprio por posição e o estoque é atualizado conforme as inscrições.'],
+['A aprovação garante contrato?','Não. Participação, destaque ou avaliação não garantem contratação por clube brasileiro ou estrangeiro.'],
+['Como funciona para menores?','O processo deve exigir consentimento do responsável legal conforme regulamento e orientação jurídica.']
+];
+document.getElementById('faqList').innerHTML=faqData.map(([q,a])=>`<div class="faq-item"><button class="faq-q">${q}<span>+</span></button><div class="faq-a">${a}</div></div>`).join('');
+document.querySelectorAll('.faq-q').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('open'));
+
+let step=1,selectedStage='pe',selectedPosition='';
+const modal=document.getElementById('registerModal');
+
+function renderStageChoices(){
+ document.getElementById('stageChoices').innerHTML=stages.map(s=>`<button class="choice ${selectedStage===s.id?'selected':''}" onclick="chooseStage('${s.id}')"><strong>${s.state}</strong><br><span style="color:#777">${s.city}</span></button>`).join('');
+}
+function renderPositionChoices(){
+ document.getElementById('positionChoices').innerHTML=inventories[selectedStage].map(p=>{
+   const left=p.cap-p.sold;
+   return `<button class="choice ${selectedPosition===p.name?'selected':''}" ${left<=0?'disabled style="opacity:.45"':''} onclick="choosePosition('${p.name}')"><strong>${p.name}</strong><br><span style="color:#777">${left<=0?'Esgotado':left+' vagas'}</span></button>`;
+ }).join('');
+ document.getElementById('secondaryPosition').innerHTML='<option value="">Nenhuma</option>'+inventories[selectedStage].map(p=>`<option>${p.name}</option>`).join('');
+}
+window.chooseStage=id=>{selectedStage=id;selectedPosition='';renderStageChoices();renderPositionChoices()}
+window.choosePosition=pos=>{selectedPosition=pos;renderPositionChoices()}
+
+function updateSteps(){
+ document.querySelectorAll('.form-step').forEach(el=>el.classList.toggle('active',Number(el.dataset.step)===step));
+ document.querySelectorAll('.progress span').forEach((el,i)=>el.classList.toggle('active',i<Math.min(step,5)));
+ document.getElementById('prevStep').style.visibility=(step===1||step===6)?'hidden':'visible';
+ document.getElementById('nextStep').style.display=step>=5?'none':'inline-flex';
+ document.getElementById('modalActions').style.display=step===6?'none':'flex';
+}
+window.openRegister=function(stage='pe',pos=''){
+ selectedStage=stage;selectedPosition=pos;step=1;renderStageChoices();renderPositionChoices();modal.classList.add('open');updateSteps();
+}
+document.querySelectorAll('.open-register').forEach(b=>b.onclick=()=>openRegister('pe'));
+document.getElementById('closeModal').onclick=()=>modal.classList.remove('open');
+document.getElementById('finish').onclick=()=>modal.classList.remove('open');
+document.getElementById('nextStep').onclick=()=>{
+ if(step===2 && !selectedPosition){alert('Escolha uma posição.');return;}
+ if(step===3 && !document.getElementById('athleteName').value.trim()){alert('Informe o nome do atleta.');return;}
+ if(step===4){
+   if(!document.getElementById('noClub').checked){alert('É necessário declarar que o atleta não possui vínculo com clube de futebol profissional.');return;}
+   if(!document.getElementById('noAgent').checked){alert('É necessário declarar que o atleta não possui vínculo com empresário, agente ou empresa de representação esportiva.');return;}
+   if(!document.getElementById('cardio').checked){alert('É necessário confirmar a ciência sobre a obrigatoriedade do parecer/atestado cardiológico.');return;}
+   if(!document.getElementById('terms').checked){alert('É necessário aceitar o Regulamento Oficial e o Termo de Responsabilidade.');return;}
+ }
+ step++;
+ if(step===5){
+   const st=stages.find(s=>s.id===selectedStage);
+   document.getElementById('summaryText').innerHTML=`<strong>Atleta:</strong> ${document.getElementById('athleteName').value}<br><strong>Etapa:</strong> ${st.state} — ${st.city}<br><strong>Posição:</strong> ${selectedPosition}`;
+ }
+ updateSteps();
+}
+document.getElementById('prevStep').onclick=()=>{if(step>1){step--;updateSteps()}}
+document.getElementById('simulatePayment').onclick=()=>{
+ const inv=inventories[selectedStage].find(p=>p.name===selectedPosition);
+ if(inv&&inv.sold<inv.cap)inv.sold++;
+ const st=stages.find(s=>s.id===selectedStage);
+ const code='DSEB-'+st.id.toUpperCase()+'-'+Math.floor(10000+Math.random()*89999);
+ document.getElementById('confirmationText').innerHTML=`${document.getElementById('athleteName').value}, sua inscrição demonstrativa foi confirmada.<br><br><strong>${st.state}</strong><br>${selectedPosition}<br>Número: <strong>${code}</strong>`;
+ renderPositions(selectedStage);step=6;updateSteps();
+}
+
+renderStages();renderSelect();renderPositions();renderStageChoices();renderPositionChoices();
+</script>
+</body>
+</html>
