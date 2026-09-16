@@ -130,6 +130,16 @@ footer{padding:42px 0;border-top:1px solid #252525}
   .floating{left:12px;right:12px}
   .floating .btn{width:100%}
 }
+
+/* V2 visual refinements */
+body{background:#080808} header{backdrop-filter:blur(18px);background:rgba(8,8,8,.78)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.62) 55%,rgba(0,0,0,.38)),radial-gradient(circle at 78% 32%,rgba(245,196,0,.26),transparent 24%),linear-gradient(135deg,#080808,#262626)}
+.hero:after{content:"";position:absolute;right:-8vw;top:18%;width:48vw;height:48vw;border:1px solid rgba(245,196,0,.15);border-radius:50%;box-shadow:0 0 0 90px rgba(245,196,0,.025),0 0 0 180px rgba(245,196,0,.015);pointer-events:none}
+.hero .container{position:relative;z-index:2}.stage-card,.position-card,.criterion,.trust,.modal-card{box-shadow:0 18px 55px rgba(0,0,0,.08)}
+.stage-card,.position-card,.criterion,.trust{transition:transform .2s ease,border-color .2s ease}.stage-card:hover,.position-card:hover{transform:translateY(-3px)}
+.position-card:hover{border-color:#6d5b1d}.btn{transition:transform .2s ease,filter .2s ease}.btn:hover{transform:translateY(-2px);filter:brightness(1.03)}
+.docs-strip{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.docs-strip div{border:1px solid #333;border-radius:14px;padding:14px;background:#121212}.docs-strip b{display:block;color:var(--yellow);font-size:.76rem;letter-spacing:.08em;margin-bottom:5px}
+@media(max-width:900px){.docs-strip{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.docs-strip{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -153,18 +163,19 @@ footer{padding:42px 0;border-top:1px solid #252525}
   <div class="container">
     <div class="eyebrow">Draft Soccer Euro Brasil 2026</div>
     <h1>Seu futebol precisa ser visto.</h1>
-    <p>Avaliação profissional para atletas de 16 a 18 anos, com etapas em diferentes cidades e vagas limitadas por posição.</p>
+    <p>Avaliação profissional para atletas de 18 a 19 anos, com etapas em diferentes cidades e vagas limitadas por posição.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#etapas">Encontre sua etapa</a>
       <a class="btn btn-secondary" href="#como-funciona">Como funciona</a>
     </div>
-    <p class="small" style="margin-top:46px">Uma iniciativa RMB SPORTS</p>
+    <div class="docs-strip"><div><b>IDADE</b>18–19 anos</div><div><b>ATLETA LIVRE</b>Sem vínculo com clube profissional</div><div><b>SEM REPRESENTAÇÃO</b>Sem empresário/agente/empresa</div><div><b>SAÚDE</b>Parecer cardiológico obrigatório</div></div>
+    <p class="small" style="margin-top:32px">Uma iniciativa RMB SPORTS</p>
   </div>
 </section>
 
 <section class="quickbar">
   <div class="container quick-grid">
-    <div class="quick-item"><strong>16–18 anos</strong><span>Faixa etária</span></div>
+    <div class="quick-item"><strong>18–19 anos</strong><span>Faixa etária</span></div>
     <div class="quick-item"><strong>R$ 100</strong><span>Inscrição / kit*</span></div>
     <div class="quick-item"><strong>Limitadas</strong><span>Vagas por posição</span></div>
     <div class="quick-item"><strong>Nacional</strong><span>Circuito em etapas</span></div>
@@ -261,14 +272,14 @@ footer{padding:42px 0;border-top:1px solid #252525}
 <section class="section">
   <div class="container parents">
     <div>
-      <div class="eyebrow">Pais e responsáveis</div>
-      <h2>Para quem sonha e para quem cuida desse sonho.</h2>
-      <p>Informações claras sobre organização, segurança, regulamento, avaliação e participação de menores.</p>
+      <div class="eyebrow">Elegibilidade e segurança</div>
+      <h2>Requisitos claros antes de entrar em campo.</h2>
+      <p>Informações claras sobre organização, segurança, regulamento, documentação obrigatória e critérios de participação.</p>
     </div>
     <div class="trust-grid">
       <div class="trust"><h3>Organização</h3><p>Quem realiza e como funciona.</p></div>
       <div class="trust"><h3>Segurança</h3><p>Estrutura operacional e orientações.</p></div>
-      <div class="trust"><h3>Autorização</h3><p>Consentimento de menores.</p></div>
+      <div class="trust"><h3>Documentação</h3><p>Parecer cardiológico e Termo de Responsabilidade.</p></div>
       <div class="trust"><h3>Resultados</h3><p>Como serão comunicados.</p></div>
     </div>
   </div>
@@ -331,14 +342,13 @@ footer{padding:42px 0;border-top:1px solid #252525}
       </div>
     </div>
     <div class="form-step" data-step="4">
-      <h3 style="font-size:1.9rem">4. Responsável legal</h3>
-      <div class="form-grid">
-        <div class="field"><label>Nome do responsável</label><input></div>
-        <div class="field"><label>CPF do responsável</label><input></div>
-        <div class="field"><label>WhatsApp</label><input></div>
-        <div class="field"><label>E-mail</label><input type="email"></div>
-      </div>
+      <h3 style="font-size:1.9rem">4. Elegibilidade e segurança</h3>
+      <p style="color:#666">Confirme os requisitos obrigatórios para participação no Draft Soccer Euro Brasil.</p>
       <div style="display:grid;gap:12px;margin-top:18px">
+        <label style="display:flex;gap:9px;align-items:flex-start">
+          <input type="checkbox" id="ageOk">
+          <span>Declaro que o atleta atende à faixa etária oficial de 18 a 19 anos.</span>
+        </label>
         <label style="display:flex;gap:9px;align-items:flex-start">
           <input type="checkbox" id="noClub">
           <span>Declaro que o atleta não possui vínculo com clube de futebol profissional.</span>
@@ -440,7 +450,7 @@ const faqData=[
 ['Quanto custa?','Neste protótipo, o valor exibido é R$ 100.'],
 ['Como funcionam as vagas por posição?','Cada etapa possui limite próprio por posição e o estoque é atualizado conforme as inscrições.'],
 ['A aprovação garante contrato?','Não. Participação, destaque ou avaliação não garantem contratação por clube brasileiro ou estrangeiro.'],
-['Como funciona para menores?','O processo deve exigir consentimento do responsável legal conforme regulamento e orientação jurídica.']
+['Quais documentos são obrigatórios?','O atleta deverá atender ao Regulamento Oficial, assinar o Termo de Responsabilidade e apresentar parecer/atestado cardiológico que declare aptidão para a prática esportiva antes das atividades em campo.']
 ];
 document.getElementById('faqList').innerHTML=faqData.map(([q,a])=>`<div class="faq-item"><button class="faq-q">${q}<span>+</span></button><div class="faq-a">${a}</div></div>`).join('');
 document.querySelectorAll('.faq-q').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('open'));
@@ -478,6 +488,7 @@ document.getElementById('nextStep').onclick=()=>{
  if(step===2 && !selectedPosition){alert('Escolha uma posição.');return;}
  if(step===3 && !document.getElementById('athleteName').value.trim()){alert('Informe o nome do atleta.');return;}
  if(step===4){
+   if(!document.getElementById('ageOk').checked){alert('É necessário confirmar a faixa etária oficial de 18 a 19 anos.');return;}
    if(!document.getElementById('noClub').checked){alert('É necessário declarar que o atleta não possui vínculo com clube de futebol profissional.');return;}
    if(!document.getElementById('noAgent').checked){alert('É necessário declarar que o atleta não possui vínculo com empresário, agente ou empresa de representação esportiva.');return;}
    if(!document.getElementById('cardio').checked){alert('É necessário confirmar a ciência sobre a obrigatoriedade do parecer/atestado cardiológico.');return;}
@@ -504,3 +515,4 @@ renderStages();renderSelect();renderPositions();renderStageChoices();renderPosit
 </script>
 </body>
 </html>
+
